@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Upload Form{% endblock %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">💿 Upload</h1>
+      <p class="lead">Upload files to the server.</p>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">Upload File</div>
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data" action="{{ url_for('admin.upload')}}">
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Select a file to upload</label>
+                {{ form.file(class='form-control',id='formFile') }}    
+              </div>
+            
+            {{ form.submit() }}
+        </form>
+    </div>
+</div>
+{% endblock %}

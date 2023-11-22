@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}User Profile{% endblock %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">{{user.username}}</h1>
+      <p class="lead">user profile</p>
+    </div>
+  </div>
+<div class="card">
+    <div class="card-header">Profile</div>
+    <div class="card-body">
+      <h2 class="display-6">About {{ user.username }}</h2>
+        <p>{{ user.profile().bio }}</p>
+    </div>
+    <div class="card-footer"></div>
+</div>
+{% endblock %}

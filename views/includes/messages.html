@@ -1,0 +1,19 @@
+<!-- 
+    Handle Session Errors and Messages
+-->
+{% if session['error'] %}
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <form method="POST" action="{{url_for('main.close_message')}}">
+            <button type="submit" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </form>
+        {{ session['error'] }}
+    </div>
+{% elif session['message'] %}
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <form method="POST" action="{{url_for('main.close_message')}}">
+            <button type="submit" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </form>
+        <p>ℹ {{ session['message'] }}</p>
+        
+    </div>
+{% endif %}

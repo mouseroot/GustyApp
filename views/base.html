@@ -1,0 +1,62 @@
+<!-- 
+    Our Base Template
+
+    This template is rendered on every page, it uses blocks to allow other templates to
+    override the contents within the specific blocks
+
+    title - Lets us change the title of the page rendered
+    content - This is the main content that is centered and made responsive
+
+    There are some included files aswell that handle the navigation-bar and the error/messages
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <style type="text/css">
+        body {
+            background-color: #939393;
+        }
+    </style>
+	<title>{% block title %}App{% endblock %}</title>
+</head>
+<body>
+    {% include "includes/navbar.html" %}
+    <br />
+    <div class="container">
+        {% include "includes/messages.html" %}
+        <div class="row g-5">
+            <div class="col-md-4 d-none"></div>
+            <div class="col-md-8">
+            {% block content %}
+            <div class="card">
+                <div class="card-header">Responsive Application Template</div>
+                <div class="card-body">
+                    <div class="jumbotron jumbotron-fluid">
+                        <div class="container">
+                            <img src="{{ url_for('static', filename='flask-horizontal.webp') }}" class="img-fluid rounded d-block mx-auto"/>
+                            <p class="lead">Small Boilerplate using bootstrap and user authentication for mobile web and desktop applications</p>
+                            <small id="#" class="form-text text-muted d-none d-xl-block">Desktop View</small>
+                            <small id="#" class="form-text text-muted d-block d-sm-none">Mobile View</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
+            </div>
+            <div class="col-md-4 d-none"></div>
+        </div>
+        <br />
+    </div>
+    <!-- Javascript: Jquery, Bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

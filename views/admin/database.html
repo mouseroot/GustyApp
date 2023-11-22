@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block title %}Database Explorer{% endblock %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">💻 Database Explorer</h1>
+      <p class="lead">Explore the database</p>
+    </div>
+</div>
+<!-- Profiles -->
+<div class="card">
+    <div class="card-header">Profile Table</div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Bio</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for i in profiles %}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.bio}}</td>
+                    <td>{{i.status}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />
+<!-- Settings -->
+<div class="card">
+    <div class="card-header">Settings Table</div>
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">App Name</th>
+                <th scope="col">Developer Mode</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0</td>
+                    <td>{{ setting.app_name }}</td>
+                    <td>{{ setting.dev_mode }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />
+<!-- User -->
+<div class="card">
+    <div class="card-header">User Table</div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">username</th>
+                <th scope="col">password(Hashed)</th>
+                <th scope="col">email</th>
+                <th scope="col">Admin?</th>
+                <th scope="col">Profile ID</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.password[:10] }}...</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.is_admin }}</td>
+                    <td>{{ user.profile_id }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
