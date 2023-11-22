@@ -2,10 +2,22 @@
 
 ## What is this?
 
-This is a template to get you started with Flask and Bootstrap geared towards mobile web applications
+This is a template for Flask and Bootstrap geared towards mobile web applications
 
-This is to help get you started with user authentification and user profiles
+and to help get you started with user authentification and user profiles
 
+## Install
+
+```bash
+pip install flask flask-sqlalchemy flask-login flask-wtf flask-bcrypt
+```
+
+Then navigate to the Root dir, the dir with `ext.py`
+and run the command
+```bash
+bin\debug.bat
+```
+or naviagate to the bin directory and run `debug.bat`
 
 ## Features
 - Bootstrap for style/design
@@ -23,7 +35,7 @@ This is to help get you started with user authentification and user profiles
 ## Whats included?
 
 ### Models
-You have 2 Models, User and Profile
+You have 3 Models, User, Profile and Settings
 
 #### User model
 - username
@@ -33,6 +45,10 @@ You have 2 Models, User and Profile
 #### Profile
 - bio
 - status
+
+#### Settings
+- app_name
+- dev_mode
 
 ### User Authentification
 
@@ -53,30 +69,53 @@ logged in users can make changes to thier profiles
 
 ### Admin Panel
 
-Very basic admin panel to view or delete the registered users
+A slew of features that allows you to:
+ - Manage existing users and delete them
+ - upload files
+ - explore uploaded files
+ - make changes to the website branding
+ - Backup or restore the database
+ - explore the database and its tables
+ - put the site into developer mode / maitence mode
 
 ## Project Structure
 
 - bin/ 
     - run.bat
+    - drop.bat
     - debug.bat
+
 - blueprints/
     - admin.py
     - auth.py
     - main.py
     - profile.py
-- forms
+- forms/
     - auth.py
     - profile.py
-- models
+    - settings.py
+- models/
     - user.py
-- storage
+    - settings.py
+- storage/
     - static/
+        - favicon.ico
+        - flask-horizontal.webp
     - uploads/
-- views
+- views/
     - admin/
+        - browse.html
+        - config.html
+        - database.html
+        - terminal.html
+        - upload.html
+        - users.html
     - auth/
+        - login.html
+        - register.html
     - includes/
+        - navbar.html
+        - messages.html
     - base.html
     - dashboard.html
     - user.html
